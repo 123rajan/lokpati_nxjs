@@ -1,0 +1,11 @@
+/* In your FontSwitcher.css */
+
+/* Font for Unicode (Noto Sans Nepali) */
+.font-unicode {
+  font-family: "Noto Sans Nepali", sans-serif;
+}
+
+/* Font for Preeti */
+.font-preeti {
+  font-family: "Preeti", sans-serif;
+}
