@@ -82,6 +82,10 @@ const Story = ({ news }) => {
 
   const renderHtmlContent = (htmlString) => {
     const parseOembed = (html) => {
+      if (typeof window === "undefined") {
+        return html; // Return unmodified HTML on the server side
+      }
+
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
 
@@ -116,7 +120,8 @@ const Story = ({ news }) => {
     };
 
     // Parse and replace <oembed> tags in the HTML string
-    const processedHtml = parseOembed(htmlString);
+    const processedHtml =
+      typeof window !== "undefined" ? parseOembed(htmlString) : htmlString;
 
     return (
       <div
@@ -235,7 +240,7 @@ const Story = ({ news }) => {
               <Card11 myWord={news.category_name} id={news.id} />
             </div>
           </div>
-          <div className="col-span-11 xl:col-span-4 h-full px-5">
+          <div className="col-span-11 xl:col-span-4 min-h-full  px-5">
             <div>
               <SmallAds name="S_sidebar_before_followus1" />
               <SmallAds name="S_sidebar_before_followus2" />

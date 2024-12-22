@@ -18,7 +18,7 @@ const SmallAds = ({ name }) => {
   const filteredAd = ads.find((ad) => ad.ads_name === `${name}`);
 
   return (
-    <div className="max-w-full max-h-[500px] flex justify-center my-5">
+    <div className="max-w-full  flex justify-center my-5">
       {loading ? (
         <span>Loading...</span>
       ) : (
