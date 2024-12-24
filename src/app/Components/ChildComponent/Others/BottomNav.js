@@ -70,7 +70,7 @@ const BottomNav = () => {
         .filter(
           (item) =>
             item.active === true &&
-            item.language === lge &&
+            // item.language === lge &&
             item.active === true
         )
         .sort((a, b) => a.display_order - b.display_order);
@@ -259,7 +259,7 @@ const BottomNav = () => {
             className="hidden lg:flex text-white h-full text-[18px] items-center justify-center"
             // onClick={scrollToTop}
           >
-            {lge === "en" ? <p>Market</p> : <p>UNICODE</p>}
+            {lge === "en" ? <p>UNICODE</p> : <p>UNICODE</p>}
           </Link>
         </li>
         <li>

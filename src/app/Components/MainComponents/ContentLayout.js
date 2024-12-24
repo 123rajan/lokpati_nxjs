@@ -101,6 +101,7 @@ const ContentLayout = ({ mukhyaShow }) => {
             <Breadcrumb
               showLinks={false}
               addNews={false}
+              video={true}
               myWord={lge === "en" ? "Video" : "भिडियो"}
             />
             <Card8 />
