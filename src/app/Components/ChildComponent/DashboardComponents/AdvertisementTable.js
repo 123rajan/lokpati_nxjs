@@ -127,7 +127,7 @@ const AdvertisementTable = ({ reload, setReload }) => {
         >
           <Image
             src={
-              ifContent ? `https://cms.krishisanjal.com${image}` : `${image}`
+              ifContent ? `https://cms.lokpati.com${image}` : `${image}`
             }
             alt="Advertisement"
             width={100} // Set a width for the image

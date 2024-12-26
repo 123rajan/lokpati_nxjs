@@ -7,7 +7,7 @@ import { useNavigation } from "../../Context/NavigationContext";
 import { useNewsSearch } from "../../Context/searchNewsContext";
 import { Get, Delete } from "../../Redux/API";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 const NewsTable = ({ reload, setReload }) => {
@@ -20,7 +20,7 @@ const NewsTable = ({ reload, setReload }) => {
   const [lge, setLge] = useState(pathname.includes("/en") ? "en" : "np");
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
   const fetchData = useCallback(async () => {
     setLoading(true);
     const token = localStorage.getItem("Token");
@@ -46,7 +46,6 @@ const NewsTable = ({ reload, setReload }) => {
           // If self_dates are equal, sort by id in descending order
           return b.id - a.id;
         });
-      console.log(requiredData);
       const transformedData = requiredData.map((item) => ({
         key: item.id,
         language: item.language,
@@ -56,9 +55,10 @@ const NewsTable = ({ reload, setReload }) => {
         news_post: item.news_post,
         self_date: item.self_date,
         image: hasContent
-          ? `https://cms.krishisanjal.com${item.image}`
-          : item.image,
+          ? `https://cms.lokpati.com${item.image}`
+          : item.image || item.media_image,
         active: item.active,
+        pdf_document: item.pdf_document,
         breaking_news: item.breaking_news,
         category: item.category,
         category_name: item.category_name,
@@ -70,6 +70,7 @@ const NewsTable = ({ reload, setReload }) => {
       if (error?.response?.data?.code === "token_not_valid") {
         localStorage.removeItem("Token");
         message.error(error.response?.data?.code);
+        router.push("/dashboard/login");
       }
     } finally {
       setLoading(false);
@@ -251,7 +252,7 @@ const NewsTable = ({ reload, setReload }) => {
         <NewsModify
           modifyObj={selectedNews}
           fetchData={fetchData}
-          handleCancel={() => handleCancel("edit")}
+          handleCancel2={() => handleCancel("edit")}
         />
       </Modal>
       <Modal

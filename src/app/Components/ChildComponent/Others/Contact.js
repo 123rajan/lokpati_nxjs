@@ -60,7 +60,7 @@ export default function Contact({ vertical = false }) {
       {/* YouTube Icon */}
       <span className="flex justify-center items-center">
         <a
-          href="https://www.youtube.com/@krishisanjal"
+          href="https://www.youtube.com/@l"
           target="_blank"
           style={{ textDecoration: "none" }}
           className="w-12 h-12  text-white rounded-full flex items-center justify-center shadow-md"

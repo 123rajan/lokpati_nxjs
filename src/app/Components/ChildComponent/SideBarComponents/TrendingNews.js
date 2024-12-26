@@ -125,6 +125,7 @@ export default function TrendingNews() {
                 subtitle={news.subtitle}
                 image={
                   news.image ||
+                  news.media_image ||
                   "https://cms.lokpati.com/media/author/favicon-lokpati.png"
                 }
               />

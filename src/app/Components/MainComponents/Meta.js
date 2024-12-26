@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   let post;
   const { year, month, day, newsId } = params;  // Destructure params directly
 
-  const fullUrl = `https://krishisanjal.com/story/${year}/${month}/${day}/${newsId}`;
+  const fullUrl = `https://lokpati.com/story/${year}/${month}/${day}/${newsId}`;
   try {
     post = await fetchPost(newsId); // Use newsId directly here
   } catch (error) {
@@ -34,9 +34,9 @@ export async function generateMetadata({ params }) {
   // Handle the case where post is not found
   if (!post) {
     return {
-      title: "Krishi Sanjal",
+      title: "Lokpati",
       description:
-        "KrishiSanjal empowers Nepalese farmers with agricultural knowledge and resources.",
+        "Lokpati - Best News Portal of Nepal, नेपालको उत्कृष्ट न्युज पोर्टल",
     };
   }
 

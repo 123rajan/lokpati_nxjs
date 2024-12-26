@@ -104,7 +104,6 @@ export default function Review() {
           localStorage.removeItem("Token");
           message.error(error.response?.data?.code);
           router.push("/dashboard/login");
-          router.refresh();
         }
       } finally {
         setLoading(false);

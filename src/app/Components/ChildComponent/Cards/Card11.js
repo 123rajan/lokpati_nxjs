@@ -45,7 +45,7 @@ const Card11 = ({ myWord, id }) => {
                 <div key={item.id} className="w-full h-[350px] lg:h-[320px]">
                   <SmallCardContentBottom
                     id={item.id}
-                    image={item.image}
+                    image={item.image || item.media_image}
                     lineClampTitle={2}
                     lineClampDes={2}
                     textBlack={true}

@@ -111,7 +111,7 @@ const MemberTable = ({ reload, setReload }) => {
         lge: item.language,
         description: item.description,
         img: hasContent
-          ? `https://cms.krishisanjal.com${item.image}`
+          ? `https://cms.lokpati.com${item.image}`
           : item.image,
       }));
       setDataSource(formattedData);

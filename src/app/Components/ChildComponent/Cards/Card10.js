@@ -9,11 +9,7 @@ import Link from "next/link";
 // Utility function to filter news items based on category/sub-category
 const filterNews = (wholeNews, word) => {
   return wholeNews
-    .filter(
-      (item) =>
-        (item.category_name === word || item.sub_category === word) &&
-        item.active === true
-    )
+    .filter((item) => item.category_name === word || item.sub_category === word)
     .slice(0, 3); // Get the top 3 news
 };
 
@@ -44,7 +40,7 @@ const NewsSection = ({ word, news, isMiddle, themeColor }) => {
             <SmallCardContentBottom
               id={item.id}
               title={item.news_title}
-              image={item.image}
+              image={item.image || item.media_image}
               created_date_ad={item.created_date_ad}
               created_date_bs={item.created_date_bs}
               textBlack={isMiddle ? false : true}

@@ -2,9 +2,9 @@ import React from "react";
 import Review from "../Components/ChildComponent/DashboardComponents/Review";
 
 export const metadata = {
-  title: "KrishiSanjal | Dashboard",
+  title: "Lokpati | Dashboard",
   description:
-    "KrishiSanjal empowers Nepalese farmers with agricultural knowledge and resources.",
+    "Lokpati - Best News Portal of Nepal, नेपालको उत्कृष्ट न्युज पोर्टल",
 };
 
 export default function dashboard() {

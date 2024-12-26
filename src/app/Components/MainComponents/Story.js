@@ -16,6 +16,7 @@ import Image from "next/image";
 import Breadcrumb from "../ChildComponent/Others/Breadcrumb";
 import Card11 from "../ChildComponent/Cards/Card11";
 import { usePathname } from "next/navigation";
+import PDFViewer from "../ChildComponent/Others/PDFViewer";
 
 const Story = ({ news }) => {
   const { themeColor, bgColor } = useTheme();
@@ -205,9 +206,9 @@ const Story = ({ news }) => {
         <div className="w-full grid grid-cols-11">
           <div className="col-span-11 xl:col-span-7 w-full h-full">
             <div className="flex flex-col gap-[20px] w-full">
-              {news.image && (
+              {(news.image || news.media_image) && (
                 <Image
-                  src={news.image}
+                  src={news.media_image || news.image}
                   alt={news.news_title}
                   style={{
                     border: `2px dotted ${themeColor}`,
@@ -223,6 +224,7 @@ const Story = ({ news }) => {
               </div>
               {news.table_html && renderHtmlContent(news.table_html)}
             </div>
+            {news.pdf_document && <PDFViewer pdfUrl={news.pdf_document} />}
             <div className="my-5">
               <Share
                 newsTitle={news.news_title}

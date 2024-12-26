@@ -119,7 +119,7 @@ const ContactUs = () => {
                 <h3 className="text-[#185924] text-xl font-semibold">
                   Email :
                 </h3>
-                <p>info@krishisanjal.com</p>
+                <p>info@L.com</p>
               </div>
               <div className="flex flex-col gap-1 tracking-wide">
                 <h3 className="text-[#185924] text-xl font-semibold">

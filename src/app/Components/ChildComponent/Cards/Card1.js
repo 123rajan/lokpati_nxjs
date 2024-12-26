@@ -13,13 +13,14 @@ const Card1 = ({ myWord }) => {
   const { themeColor } = useTheme();
   useEffect(() => {
     const filteredResponse = wholeNews.filter(
-      (item) => item.category_name === myWord && item.image != null
+      (item) => item.category_name === myWord
+      // && item.image != null
     );
     if (filteredResponse.length > 0) {
       setNews(filteredResponse);
     } else {
       const subCategoryFiltered = wholeNews.filter(
-        (item) => item.sub_category === myWord && item.active === true
+        (item) => item.sub_category === myWord
         // &&           item.image != null
       );
       // .sort((a, b) => b.id - a.id);
@@ -43,7 +44,7 @@ const Card1 = ({ myWord }) => {
               id={news[0].id}
               title={news[0].news_title}
               sub_title={news[0].news_sub_title}
-              image={news[0].image}
+              image={(news[0].image, news[0].media_image)}
               created_date_ad={news[0].created_date_ad}
               created_date_bs={news[0].created_date_bs}
             />
@@ -65,7 +66,7 @@ const Card1 = ({ myWord }) => {
                   id={item.id}
                   title={item.news_title}
                   sub_title={item.news_sub_title}
-                  image={item.image}
+                  image={item.image || item.media_image}
                   created_date_ad={item.created_date_ad}
                   created_date_bs={item.created_date_bs}
                 />

@@ -53,7 +53,7 @@ const Card9 = ({ myWord }) => {
                   >
                     <SmallCardContentBottom
                       id={item.id}
-                      image={item.image}
+                      image={item.image || item.media_image}
                       lineClampTitle={3}
                       lineClampDes={2}
                       textBlack={true}

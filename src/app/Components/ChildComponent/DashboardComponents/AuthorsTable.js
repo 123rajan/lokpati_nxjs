@@ -128,7 +128,7 @@ const AuthorsTable = ({ reload, setReload }) => {
         address: item.address,
         email: item.author_email,
         image: hasContent
-          ? `https://cms.krishisanjal.com${item.image}` || ""
+          ? `https://cms.lokpati.com${item.image}` || ""
           : item.image || "",
         social_media: item.social_media_url,
       }));

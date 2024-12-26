@@ -79,7 +79,11 @@ const Pravidi = () => {
                     created_date_bs={item.created_date_bs}
                     title={item.news_title}
                     subtitle={item.subtitle}
-                    image={item.image}
+                    image={
+                      item.image ||
+                      item.media_image ||
+                      "https://cms.lokpati.com/media/author/favicon-lokpati.png"
+                    }
                   />
                 </div>
               </div>

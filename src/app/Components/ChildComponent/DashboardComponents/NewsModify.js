@@ -1,15 +1,16 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Select, Checkbox, message } from "antd";
+import { Form, Input, Button, Select, Checkbox, message, Modal } from "antd";
 import dayjs from "dayjs";
 import { Get, Put } from "../../Redux/API";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Image from "next/image"; // Import Image component from next/image
+import Gallery from "./Gallery";
 
 const { Option } = Select;
 
-export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
+export default function NewsModify({ modifyObj, handleCancel2, fetchData }) {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [author, setAuthor] = useState(null);
@@ -26,6 +27,10 @@ export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
   const [subCategoryData, setSubCategoryData] = useState([]);
   const [authorData, setAuthorData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [galleryImage, setGalleryImage] = useState(null);
+  const [selectedPdf, setSelectedPdf] = useState(null);
+  const [pdfPreview, setPdfPreview] = useState(null);
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -68,20 +73,50 @@ export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
       );
       setLge(modifyObj.language);
       setDate(modifyObj.self_date ? dayjs(modifyObj.self_date) : null);
-      setActive(modifyObj.active || true);
+      setActive(modifyObj.active || false);
       setBreaking(modifyObj.breaking_news);
       setDisData(modifyObj.news_post || "");
-      setImagePreview(modifyObj.image || null);
+      setImagePreview(modifyObj.media_image || modifyObj.image || null);
+      setPdfPreview(modifyObj.pdf_document || null);
     }
   }, [modifyObj]);
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const handleUpload = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(file);
     if (file) {
+      setSelectedImage(file);
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
+      setGalleryImage("");
     }
+  };
+  const handlePdfUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type === "application/pdf") {
+      const previewUrl = URL.createObjectURL(file);
+      setPdfPreview(previewUrl); // Use a URL string
+      setSelectedPdf(file);
+    } else {
+      message.error("Please upload a PDF file");
+    }
+  };
+
+  const handleGalleryUpload = (myurl) => {
+    setGalleryImage(myurl);
+    setImagePreview(myurl);
+    setSelectedImage("");
   };
 
   const handleSubmit = async () => {
@@ -109,9 +144,17 @@ export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
     formData.append("breaking_news", breaking ? "true" : "false");
 
     formData.append("news_post", disData);
-
     if (selectedImage) {
       formData.append("image", selectedImage);
+      formData.append("media_image", "");
+    }
+    if (galleryImage) {
+      formData.append("media_image", galleryImage);
+      // const emptyFile = new File([""], "empty.txt", { type: "text/plain" });
+      formData.append("image", "");
+    }
+    if (selectedPdf) {
+      formData.append("pdf_document", selectedPdf);
     }
     const token = localStorage.getItem("Token");
     const headers = { Authorization: `Bearer ${token}` };
@@ -128,7 +171,7 @@ export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
       console.error("Error submitting form:", error);
       message.error("Error on news publish");
     } finally {
-      handleCancel();
+      handleCancel2();
       fetchData();
       setLoading(false);
     }
@@ -244,21 +287,50 @@ export default function NewsModify({ modifyObj, handleCancel, fetchData }) {
           />
         </div>
       </Form.Item>
-      <Form.Item label="Upload Image">
-        <input type="file" onChange={handleUpload} />
-        {imagePreview && (
-          <div style={{ marginTop: "10px" }}>
-            {/* Replaced <img> with <Image> from next/image */}
-            <Image
-              src={imagePreview}
-              alt="Preview"
-              width={300} // Set width
-              height={200} // Set height
-              style={{ objectFit: "cover" }} // Ensure image covers the area
+      <div className="w-full flex  flex-col sm:flex-row justify-evenly">
+        <Form.Item label="Upload Image">
+          <input type="file" onChange={handleUpload} />
+        </Form.Item>
+        <Form.Item>
+          <Button onClick={showModal}>Upload Image from Server</Button>
+          <Modal
+            title="Upload Image from Server"
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={null}
+            style={{ minWidth: "90vw", overflow: "hidden" }}
+          >
+            <Gallery
+              handleGalleryUpload={handleGalleryUpload}
+              handleCancel={handleCancel}
             />
-          </div>
-        )}
+          </Modal>
+        </Form.Item>
+      </div>
+      {imagePreview && (
+        <div style={{ marginTop: "10px" }}>
+          <h2 className="text-green-800 font-bold">Image Preview :</h2>
+          <Image
+            src={imagePreview}
+            alt="Preview"
+            width={300} // Set width
+            height={200} // Set height
+            style={{ objectFit: "cover" }} // Ensure image covers the area
+          />
+        </div>
+      )}
+      <Form.Item label="Upload PDF" className="mt-[25px]">
+        <input type="file" accept=".pdf" onChange={handlePdfUpload} />
       </Form.Item>
+      {pdfPreview && (
+        <div style={{ marginTop: "10px" }} className="my-3">
+          <h2 className="text-green-800 font-bold">PDF Overview:</h2>
+          <a href={pdfPreview} target="_blank">
+            {pdfPreview}
+          </a>
+        </div>
+      )}
       <Form.Item>
         <Button
           type="primary"

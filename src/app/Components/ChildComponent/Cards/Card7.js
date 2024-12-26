@@ -12,9 +12,7 @@ const Card7 = ({ myWord }) => {
 
   useEffect(() => {
     const filteredResponse = wholeNews.filter(
-      (item) =>
-        (item.category_name === myWord || item.sub_category === myWord) &&
-        item.active === true
+      (item) => item.category_name === myWord || item.sub_category === myWord
       // &&          item.image != null
     );
     // .sort((a, b) => b.id - a.id); // Sorting in descending order by id
@@ -51,6 +49,7 @@ const Card7 = ({ myWord }) => {
                 sub_title={item.news_sub_title}
                 lineClampTitle={2}
                 lineClampDes={2}
+                image={item.image || item.media_image}
                 textBlack={true}
                 showParagraph={false}
                 showDate={false}
@@ -71,6 +70,7 @@ const Card7 = ({ myWord }) => {
                   lineClampTitle={2}
                   lineClampDes={2}
                   textBlack={true}
+                  image={item.image || item.media_image}
                   showParagraph={false}
                   showDate={false}
                   created_date_ad={item.created_date_ad}
