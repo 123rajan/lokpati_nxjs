@@ -94,18 +94,6 @@ const Breadcrumb = ({
             </div>
           </Link>
         )}
-        {addNews && (
-          <Link href={lge === "en" ? `/en/${myWord}` : `/${myWord}`}>
-            <div
-              className="flex items-center text-nowrap text-l  cursor-pointer hover:tracking-wide duration-200 hover:text-blue group"
-              style={{ color: themeColor }}
-              // onClick={scrollToTop}
-            >
-              <p>{lge === "en" ? "All" : "सबै"}</p>
-              <GoArrowUpRight className="group-hover:ml-0.5 duration-200" />
-            </div>
-          </Link>
-        )}
         {video && (
           <Link href={lge === "en" ? `/en/video` : `/video`}>
             <div
