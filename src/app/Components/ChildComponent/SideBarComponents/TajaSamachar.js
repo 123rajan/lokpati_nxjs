@@ -24,11 +24,11 @@ export default function TajaSamachar() {
   const [lge, setLge] = useState(pathname.includes("/en") ? "en" : "np");
 
   useEffect(() => {
-    const filteredResponse = wholeNews;
+    const filteredResponse = wholeNews.filter((news) => news.language === lge);
 
     setFilteredNews(filteredResponse);
   }, [wholeNews, lge]); // Re-run when wholeNews or lge changes
-
+  
   return (
     <div
       style={{

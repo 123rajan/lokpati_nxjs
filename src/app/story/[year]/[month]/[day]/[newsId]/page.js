@@ -71,6 +71,7 @@ export async function generateMetadata({ params }) {
         {
           url:
             post.image ||
+            post.media_image ||
             "https://cms.lokpati.com/media/author/favicon-lokpati.png",
           width: 1260,
           height: 800,
@@ -86,6 +87,7 @@ export async function generateMetadata({ params }) {
         {
           url:
             post.image ||
+            post.media_image ||
             "https://cms.lokpati.com/media/author/favicon-lokpati.png",
           width: 1260,
           height: 800,

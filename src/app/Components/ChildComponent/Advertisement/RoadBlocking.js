@@ -64,7 +64,7 @@ const RoadBlocking = ({ name }) => {
     >
       <Link href="/">
         <Image
-          src="/logo.png"
+          src="/logo.jpg"
           alt="logo"
           height={50}
           width={200}

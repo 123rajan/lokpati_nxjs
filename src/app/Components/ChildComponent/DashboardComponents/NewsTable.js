@@ -17,7 +17,7 @@ const NewsTable = ({ reload, setReload }) => {
   const [selectedNews, setSelectedNews] = useState(null);
   const { searchValue } = useNewsSearch();
   const pathname = usePathname();
-  const [lge, setLge] = useState(pathname.includes("/en") ? "en" : "np");
+  const { lge } = useNavigation();
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();

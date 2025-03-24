@@ -18,9 +18,10 @@ const fetchPost = async (postId) => {
 };
 
 export async function generateMetadata({ params }) {
-  let post;
   const { year, month, day, newsId } = params;
   const fullUrl = `https://lokpati.com/story/${year}/${month}/${day}/${newsId}`;
+
+  let post;
   try {
     post = await fetchPost(newsId);
   } catch (error) {
@@ -30,34 +31,54 @@ export async function generateMetadata({ params }) {
       description: "An error occurred while fetching the news article.",
     };
   }
-
   // Handle the case where post is not found
   if (!post) {
     return {
-      title: "Krishi Sanjal",
+      title:
+        "Lokpati - Best News Portal of Nepal, नेपालको उत्कृष्ट न्युज पोर्टल",
       description:
-        "KrishiSanjal empowers Nepalese farmers with agricultural knowledge and resources.",
+        "Lokpati offers real-time, reliable news coverage nationwide.",
     };
   }
-
+  const firstParagraph = extractFirstParagraph(post.news_post);
+  const ogDescription = firstParagraph || post.news_title;
   return {
     title: post.news_title,
-    description: post.news_title, // You can adjust this as needed
+    description: ogDescription, // You can adjust this as needed
+    icons: {
+      icon: "https://cms.lokpati.com/media/author/favicon-lokpati.png",
+    },
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title: post.news_title,
+      description: ogDescription,
       url: fullUrl,
-      siteName: "Krishi Sanjal",
+      siteName: "Lokpati",
       images: [
         {
           url:
             post.image ||
+            post.media_image ||
             "https://cms.lokpati.com/media/author/favicon-lokpati.png",
           width: 1260,
           height: 800,
         },
       ],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.news_title,
+      description: ogDescription,
+      images: [
+        {
+          url:
+            post.image ||
+            post.media_image ||
+            "https://cms.lokpati.com/media/author/favicon-lokpati.png",
+          width: 1260,
+          height: 800,
+        },
+      ],
     },
   };
 }

@@ -170,7 +170,7 @@ const Story = ({ news }) => {
         </span>
         {news.news_sub_title && (
           <span
-            className="text-2xl pl-3  my-3"
+            className="text-2xl pl-3 my-3"
             style={{
               lineHeight: "1.5",
               transition: "font-size 0.2s ease-in-out",

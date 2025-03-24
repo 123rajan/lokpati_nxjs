@@ -340,7 +340,7 @@ export default function NewsAdd({ handleCancel2, setReload }) {
 
       {imagePreview && (
         <div style={{ marginTop: "10px" }} className=" my-3 ">
-          <h2 className="text-green-800 font-bold">Image Preview :</h2>
+          <h2 className="text-blue-800 font-bold">Image Preview :</h2>
           <img
             src={imagePreview}
             alt="Preview"
@@ -350,7 +350,7 @@ export default function NewsAdd({ handleCancel2, setReload }) {
       )}
       {selectedPdf && (
         <div style={{ marginTop: "10px" }} className="my-3">
-          <h2 className="text-green-800 font-bold">Selected PDF:</h2>
+          <h2 className="text-blue-800 font-bold">Selected PDF:</h2>
           <p>{selectedPdf.name}</p>
         </div>
       )}

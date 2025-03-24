@@ -21,16 +21,23 @@ async function fetchData(categoryName) {
   try {
     const [categoryResponse, subCategoryResponse] = await Promise.all([
       fetch(
-        "https://cms.lokpati.com/lokpati_cms/api/v1/public/category/get-category"
+        "https://cms.lokpati.com/lokpati_cms/api/v1/public/category/get-category",{
+          cache: "no-store"
+        }
       ),
       fetch(
-        "https://cms.lokpati.com/lokpati_cms/api/v1/public/category-key/get-categoryKey"
+        "https://cms.lokpati.com/lokpati_cms/api/v1/public/category-key/get-categoryKey",
+        {
+          cache:"no-cache"
+        }
       ),
+
     ]);
 
     const categoryData = await categoryResponse.json();
     const subCategoryData = await subCategoryResponse.json();
-
+    console.log("categoryData :",categoryData )
+    console.log("SubcategoryData :",subCategoryData )
     const isValidCategory =
       categoryData.some(
         (item) => item.category_name === decodeURIComponent(categoryName)

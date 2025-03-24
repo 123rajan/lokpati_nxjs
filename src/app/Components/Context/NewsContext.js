@@ -27,7 +27,7 @@ export const NewsProvider = ({ children }) => {
           // First, sort by self_date in descending order (latest date first)
           if (b.self_date !== a.self_date) {
             return new Date(b.self_date) - new Date(a.self_date); // Date comparison
-          }
+          } 
           // If self_dates are the same, then sort by id in descending order
           return b.id - a.id; // ID comparison in descending order
         });
@@ -43,7 +43,7 @@ export const NewsProvider = ({ children }) => {
   // Fetch news on language change or component mount
   useEffect(() => {
     fetchNews(); // Fetch news every time the language changes or component mounts
-  }, [lge]); // This effect runs when 'lge' changes or on component mount
+  }, []); // This effect runs when 'lge' changes or on component mount
 
   return (
     <NewsContext.Provider value={{ wholeNews, loading, setWholeNews }}>

@@ -38,7 +38,6 @@ export default function TrendingNews() {
       setError(null);
       try {
         const viewsResponse = await count;
-        console.log("Views response:", viewsResponse); // Debug log
         if (!viewsResponse || !Array.isArray(viewsResponse)) {
           throw new Error("Invalid views response");
         }
@@ -48,7 +47,6 @@ export default function TrendingNews() {
         );
 
         const newsResponse = await wholeNews;
-        console.log("News response:", newsResponse); // Debug log
 
         const trendingData = sortedViews
           .map((view) => {

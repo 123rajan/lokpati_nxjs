@@ -1,29 +1,37 @@
-// import { Mukta } from "next/font/google";
-// import Main from "../../app/Main";
+// import Main from "../Main";
 
 // // Importing Mukta font from Google Fonts
-// const mukta = Mukta({
-//   weight: ["200", "300", "400", "500", "600", "700", "800"],
-//   subsets: ["devanagari", "latin"], // You can choose subsets based on your needs
-//   variable: "--font-mukta",
-// });
 
 // export const metadata = {
-//   title: "KrishiSanjal",
-//   description:
-//     "KrishiSanjal empowers Nepalese farmers with agricultural knowledge and resources.",
+//   title: "Lokpati - Best News Portal of Nepal, नेपालको उत्कृष्ट न्युज पोर्टल",
+//   description: "Lokpati offers real-time, reliable news coverage nationwide.",
 //   icons: {
 //     icon: "https://cms.lokpati.com/media/author/favicon-lokpati.png",
+//   },
+//   openGraph: {
+//     title: "Lokpati - Best News Portal of Nepal, नेपालको उत्कृष्ट न्युज पोर्टल",
+//     description: "Lokpati offers real-time, reliable news coverage nationwide.",
+//     url: "https://lokpati.com/",
+//     siteName: "Lokpati",
+//     images: [
+//       {
+//         url: "https://cms.lokpati.com/media/author/favicon-lokpati.png",
+//         width: 1260,
+//         height: 800,
+//       },
+//     ],
+//     type: "website",
 //   },
 // };
 
 // export default function App() {
 //   return (
-//     <div className={`${mukta.className} antialiased`}>
+//     <div>
 //       <Main />
 //     </div>
 //   );
 // }
+
 "use client";
 import { notFound } from "next/navigation";
 import React, { useEffect } from "react";
@@ -32,5 +40,5 @@ export default function page() {
   useEffect(() => {
     notFound();
   }, []);
-  return <div>page</div>;
+  return <div>Page not found</div>;
 }

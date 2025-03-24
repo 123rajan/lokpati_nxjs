@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import NepaliDate from "nepali-date";
+import { NepaliDate } from "@zener/nepali-datepicker-react";
 import { useAds } from "../../Context/AdsContext";
 import Ads from "../../ChildComponent/Advertisement/Ads";
 import { Skeleton } from "@mui/material";
@@ -60,15 +60,44 @@ const TopNav = () => {
       .join("");
   };
 
+  // Function to convert English weekday to Nepali
+  const getNepaliWeekday = (weekday) => {
+    const nepaliWeekdays = [
+      "आइतबार",
+      "सोमबार",
+      "मंगलबार",
+      "बुधबार",
+      "बिहिबार",
+      "शुक्रबार",
+      "शनिबार",
+    ];
+    const englishWeekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    const index = englishWeekdays.indexOf(weekday);
+    return index !== -1 ? nepaliWeekdays[index] : "Unknown Weekday";
+  };
   // Get today's date in Nepali format
-  const todayNepaliDate = new NepaliDate().format("DD MMMM YYYY dddd");
-  const [day, monthName, year, dayOfWeek] = todayNepaliDate.split(" ");
+  const date = new NepaliDate();
+  const weekday = date.format("dddd"); // Get the day of the week (in English)
+  const day = date.format("DD"); // Get the day of the month
+  const month = date.format("MMMM"); // Get the month (in English)
+  const year = date.format("YYYY"); // Get the year
+
+  const nepaliWeekday = getNepaliWeekday(weekday); // Convert to Nepali weekday
+  const nepaliMonth = getNepaliMonthName(month); // Convert to Nepali month
+  const nepaliDay = convertToNepaliNumerals(day); // Convert the day to Nepali numerals
+  const nepaliYear = convertToNepaliNumerals(year); // Convert the year to Nepali numerals
 
   // Convert day and year to Nepali numerals
-  const nepaliDay = convertToNepaliNumerals(day);
-  const nepaliYear = convertToNepaliNumerals(year);
-  const nepaliMonthName = getNepaliMonthName(monthName);
-  const formattedNepaliDate = `${dayOfWeek}, ${nepaliDay} ${nepaliMonthName} ${nepaliYear}`;
+  const formattedNepaliDate = `${nepaliWeekday}, ${nepaliDay} ${nepaliMonth} ${nepaliYear}`;
 
   // Function to get English date in the same format
   const getEnglishDate = () => {
