@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   //   const [themeColor, setThemeColor] = useState("#089e19"); // Set default color
   const themeColor = "#0288d1";
-  const bgColor = "#f7f9fc";
+  const bgColor = "#  ";
   const myFont = "mukta";
   return (
     <ThemeContext.Provider value={{ themeColor, bgColor, myFont }}>

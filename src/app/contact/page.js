@@ -98,34 +98,32 @@ const ContactUs = () => {
           <div className="md:w-1/2 w-full flex justify-end">
             <div className="md:min-h-[350px] min-h-[300px] flex flex-col md:gap-5 mt-4 md:mt-0 gap-2 md:w-[80%] w-[95%]">
               <div className="flex flex-col gap-1 tracking-wide">
-                <h3 className="text-[#185924] text-xl font-semibold">
+                <h3 className="text-[#0288d1] text-xl font-semibold">
                   Location:
                 </h3>
                 <div>
-                  <p>
-                    Institute of Technical Consultancy and Research Services
-                    Pvt. Ltd. ( ITCRS){" "}
-                  </p>
-                  <p>Manmaiju, Kathmandu, Nepal</p>
+                  <p>Anamnagar, Kathmandu</p>
+                  <p>(सिंहदरबारको पूर्वीगेट)</p>
                 </div>
               </div>
               <div className="flex flex-col gap-1 tracking-wide">
-                <h3 className="text-[#185924] text-xl font-semibold">
+                <h3 className="text-[#0288d1] text-xl font-semibold">
                   Phone no. :
                 </h3>
-                <p>+977-9855034935</p>
+                <p>+977-9863032709</p>
               </div>
               <div className="flex flex-col gap-1 tracking-wide">
-                <h3 className="text-[#185924] text-xl font-semibold">
+                <h3 className="text-[#0288d1] text-xl font-semibold">
                   Email :
                 </h3>
-                <p>info@L.com</p>
+                <p>News: lokpatinews@gmail.com</p>
+                <p>Market: lokpatiadd@gmail.com</p>
               </div>
               <div className="flex flex-col gap-1 tracking-wide">
-                <h3 className="text-[#185924] text-xl font-semibold">
+                <h3 className="text-[#0288d1] text-xl font-semibold">
                   Information Department Registration No :
                 </h3>
-                <p>४२४६-२०८०/८१</p>
+                <p>९८८</p>
               </div>
             </div>
           </div>
@@ -234,7 +232,7 @@ const ContactUs = () => {
               )}
               <div className="w-full flex justify-end">
                 <button
-                  className="border px-5 shadow-lg rounded-sm !py-[7px] bg-[#185924] hover:bg-blue-400 text-white duration-150"
+                  className="border px-5 shadow-lg rounded-sm !py-[7px] bg-[#0288d1] hover:bg-blue-400 text-white duration-150"
                   onClick={submitBtnClk}
                   type="submit"
                 >
