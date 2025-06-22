@@ -150,7 +150,7 @@ const Story = ({ news }) => {
               ? "2xl pl-3 mt-[30px] md:text-3xl shadow-lg"
               : "3xl md:text-5xl"
           } 
-          duration-[1s] font-bold sticky top-[59px] z-10 p-2`}
+          duration-[1s] font-bold sticky top-[59px] z-10 p-2 bg-white`}
           style={{
             lineHeight: "1.5",
             transition: "font-size 0.2s ease-in-out",

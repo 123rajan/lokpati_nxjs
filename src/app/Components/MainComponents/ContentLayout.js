@@ -111,16 +111,8 @@ const ContentLayout = ({ mukhyaShow }) => {
           <Ads name="H_landscape_after_video" />
         </div>
       </div>
-      <div className="col-span-10 lg:col-span-3 h-full border-lg ">
+      <div className="col-span-10 lg:col-span-3 border-lg ">
         <SideContainer mukhyaShow={mukhyaShow} />
-        <div
-          className={`${
-            isAds ? "sticky top-[60px] z-15" : ""
-          } flex flex-col gap-[20px]`}
-        >
-          <SmallAds name="H_sidebar_after_pravidi1" />
-          <SmallAds name="H_sidebar_after_pravidi2" />
-        </div>
       </div>
     </div>
   );

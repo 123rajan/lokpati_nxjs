@@ -5,7 +5,7 @@ import Pravidi from "../SideBarComponents/Pravidi";
 
 const SideContainer = ({ mukhyaShow }) => {
   return (
-    <div className="w-full flex flex-col gap-[2px] h-full">
+    <div className="w-full flex flex-col gap-[2px] ">
       <SmallAds name="H_sidebar_before_followus1" />
       <SmallAds name="H_sidebar_before_followus2" />
       <div className="mt-2 w-full">
@@ -22,6 +22,9 @@ const SideContainer = ({ mukhyaShow }) => {
       </div>
       <div className="sticky top-[60px]">
         <Pravidi />
+
+        <SmallAds name="H_sidebar_after_pravidi1" />
+        <SmallAds name="H_sidebar_after_pravidi2" />
       </div>
     </div>
   );
